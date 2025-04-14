@@ -1,0 +1,29 @@
+[project]
+name = "cap-utils"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Anupong Wannakrairot", email = "anuponwa@scg.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "langchain-google-vertexai>=2.0.20",
+    "langchain>=0.3.23",
+    "langgraph>=0.3.29",
+    "langchain-anthropic>=0.3.10",
+    "langchain-openai>=0.3.12",
+    "dotenv>=0.9.9",
+]
+
+[project.scripts]
+cap-utils = "cap_utils:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]
