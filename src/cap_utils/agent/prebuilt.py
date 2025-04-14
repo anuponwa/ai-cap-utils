@@ -10,16 +10,17 @@ class EnglishAgent(BaseAgent):
         self,
         model: str = "gpt-4o",
         model_provider: str = "openai",
-        temperature: float = 0,
+        agent_name: str | None = None,
         google_credentials_path: str | None = None,
         openai_api_key: str | None = None,
     ):
         super().__init__(
-            tools=None,
             system_prompt=system_prompt,
             model=model,
             model_provider=model_provider,
-            temperature=temperature,
+            tools=None,
+            temperature=0,
+            agent_name=agent_name,
             google_credentials_path=google_credentials_path,
             openai_api_key=openai_api_key,
         )
@@ -33,16 +34,17 @@ class ThaiAgent(BaseAgent):
         self,
         model: str = "gpt-4o",
         model_provider: str = "openai",
-        temperature: float = 0,
+        agent_name: str | None = None,
         google_credentials_path: str | None = None,
         openai_api_key: str | None = None,
     ):
         super().__init__(
-            tools=None,
             system_prompt=system_prompt,
             model=model,
             model_provider=model_provider,
-            temperature=temperature,
+            tools=None,
+            temperature=0,
+            agent_name=agent_name,
             google_credentials_path=google_credentials_path,
             openai_api_key=openai_api_key,
         )
@@ -58,16 +60,17 @@ class SummariserAgent(BaseAgent):
         self,
         model: str = "gpt-4o",
         model_provider: str = "openai",
-        temperature: float = 0,
+        agent_name: str | None = None,
         google_credentials_path: str | None = None,
         openai_api_key: str | None = None,
     ):
         super().__init__(
-            tools=None,
             system_prompt=system_prompt,
             model=model,
             model_provider=model_provider,
-            temperature=temperature,
+            tools=None,
+            temperature=0,
+            agent_name=agent_name,
             google_credentials_path=google_credentials_path,
             openai_api_key=openai_api_key,
         )
