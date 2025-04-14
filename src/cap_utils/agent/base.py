@@ -1,5 +1,7 @@
 import os
+from uuid import uuid4
 
+import coolname
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import BaseTool
@@ -17,11 +19,12 @@ load_dotenv()
 class BaseAgent:
     def __init__(
         self,
-        tools: list[BaseTool] | None = None,
-        system_prompt: str | None = None,
+        system_prompt: str,
         model: str = "gpt-4o",
         model_provider: str = None,
+        tools: list[BaseTool] | None = None,
         temperature: float = 0,
+        agent_name: str | None = None,
         google_credentials_path: str | None = None,
         openai_api_key: str | None = None,
     ):
@@ -29,9 +32,7 @@ class BaseAgent:
 
         Parameters
         ----------
-            - tools (list[BaseTool] | None): A list of tools to register to the Agent (Default = None)
-
-            - system_prompt (str | None): A system prompt for the Agent (Default = None)
+            - system_prompt (str): A system prompt for the Agent. (Mandatory) Explain what this agent does or specialised in.
 
             - model (str): An LLM's model name (Default = "gpt-4o")
 
@@ -41,7 +42,13 @@ class BaseAgent:
 
                 If not specified as part of model arg (see above), will attempt to infer model_provider from the model.
 
+            - tools (list[BaseTool] | None): A list of tools to register to the Agent (Default = None)
+
             - temperature (float): Temperature parameter for the LLM (Default = 0)
+
+            - agent_name (str): A name for the agent instance (Default = None)
+
+                If not provided, default to using the class name, appended with random words and 4 characters of uuid4().
 
             - google_credentials_path (str | None): Path to credentials.json file that allows you to connect with Google's LLM models (Default = None)
 
@@ -62,10 +69,16 @@ class BaseAgent:
         `self.chat_interact()`: A function to interact/chat with the Agent's LLM
         """
 
-        self.tools = tools or []
         self.system_prompt = system_prompt
+        self.tools = tools or []
         self._has_system_prompt_in_history = False
         self.memory = MemorySaver()
+
+        # Define a name for the instance
+        if agent_name:
+            self.agent_name = agent_name
+        else:
+            self.agent_name = f"{type(self).__name__}: {coolname.generate_slug(2).split("-")[0]}-{str(uuid4())[:4]}"
 
         if google_credentials_path:
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_credentials_path
