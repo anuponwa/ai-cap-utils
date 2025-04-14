@@ -4,7 +4,7 @@ A library to simplify your use case with chat bot with LLMs. Perfect for Common 
 
 ## Installation
  ```
- uv add cap-utils
+ uv add do-cap-utils
  ```
 
 ## Usage
