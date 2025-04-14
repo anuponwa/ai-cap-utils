@@ -1,5 +1,8 @@
 # Change log
 
+## 0.2.1
+* Update to `do-cap-utils`
+
 ## 0.2.0
 * Make system prompt mandatory for `BaseAgent`
 * Add `agent_name`, if not provided, generate a random one

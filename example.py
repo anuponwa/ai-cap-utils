@@ -1,6 +1,6 @@
-from cap_utils.agent.base import BaseAgent
-from cap_utils.agent.prebuilt import SummariserAgent
-from cap_utils.tool import tool
+from do_cap_utils.agent.base import BaseAgent
+from do_cap_utils.agent.prebuilt import SummariserAgent
+from do_cap_utils.tool import tool
 
 
 # --------------------------------------------
