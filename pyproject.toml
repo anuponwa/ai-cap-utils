@@ -1,6 +1,6 @@
 [project]
-name = "do-cap-utils"
-version = "0.2.1"
+name = "ai-cap-utils"
+version = "0.3.0"
 description = "A utilities library for Common AI Platform"
 readme = "README.md"
 authors = [

@@ -1,4 +1,4 @@
-from do_cap_utils.agent.base import BaseAgent
+from .base import BaseAgent
 
 
 system_prompt = """You are a helpful assistant that answers everything nicely (only that you can do or know)

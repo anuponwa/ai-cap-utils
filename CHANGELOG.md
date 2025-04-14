@@ -1,5 +1,8 @@
 # Change log
 
+## 0.3.0
+* Change to `ai-cap-utils`
+
 ## 0.2.1
 * Update to `do-cap-utils`
 

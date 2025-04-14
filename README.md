@@ -4,7 +4,7 @@ A library to simplify your use case with chat bot with LLMs. Perfect for Common 
 
 ## Installation
  ```
- uv add do-cap-utils
+ uv add ai-cap-utils
  ```
 
 ## Usage
@@ -15,9 +15,9 @@ See `example.py` and `example_multiagents.py`.
 ### General
 
 ```python
-from do_cap_utils.agent.base import BaseAgent
-from do_cap_utils.agent.prebuilt import SummariserAgent
-from do_cap_utils.tool import tool
+from ai_cap_utils.agent.base import BaseAgent
+from ai_cap_utils.agent.prebuilt import SummariserAgent
+from ai_cap_utils.tool import tool
 
 
 # --------------------------------------------

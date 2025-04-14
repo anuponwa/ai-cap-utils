@@ -1,6 +1,6 @@
-from do_cap_utils.tool import tool
-from do_cap_utils.agent.base import BaseMultiAgentLLMRouter, BaseAgent
-from do_cap_utils.agent.prebuilt import SummariserAgent
+from ai_cap_utils.tool import tool
+from ai_cap_utils.agent.base import BaseMultiAgentLLMRouter, BaseAgent
+from ai_cap_utils.agent.prebuilt import SummariserAgent
 
 # --------------------------------------------
 # Import some pre-defined agent
