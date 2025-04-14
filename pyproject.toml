@@ -1,7 +1,7 @@
 [project]
 name = "cap-utils"
 version = "0.1.0"
-description = "Add your description here"
+description = "A utilities library for Common AI Platform"
 readme = "README.md"
 authors = [
     { name = "Anupong Wannakrairot", email = "anuponwa@scg.com" }
@@ -16,8 +16,6 @@ dependencies = [
     "dotenv>=0.9.9",
 ]
 
-[project.scripts]
-cap-utils = "cap_utils:main"
 
 [build-system]
 requires = ["hatchling"]
