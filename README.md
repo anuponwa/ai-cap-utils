@@ -1,4 +1,4 @@
-# do-cap-utils
+# ai-cap-utils
 
 A library to simplify your use case with chat bot with LLMs. Perfect for Common AI Platform.
 
