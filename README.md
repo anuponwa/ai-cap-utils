@@ -15,7 +15,7 @@ See `example.py` and `example_multiagents.py`.
 ### General
 
 ```python
-from ai_cap_utils.agent.base import BaseAgent
+from ai_cap_utils.agent import BaseAgent
 from ai_cap_utils.agent.prebuilt import SummariserAgent
 from ai_cap_utils.tool import tool
 
@@ -85,4 +85,55 @@ Name: add_numbers
 ================================== Ai Message ==================================
 
 The sum of 2 and 4 is 6.
+```
+
+Initialise an agent using a Google's credentials dict
+
+```python
+from ai_cap_utils.tool import tool
+from ai_cap_utils.agent import BaseAgent
+
+# --------------------------------------------
+# Import some pre-defined agent
+# --------------------------------------------
+sum_agent = SummariserAgent()
+
+
+# --------------------------------------------
+# Create your own math agent
+# --------------------------------------------
+@tool
+def add_numbers(a: int, b: int):
+    """Add two numbers together"""
+    return a + b
+
+
+@tool
+def multiplication(a: float, b: float):
+    """Multiply two numbers together"""
+    return a * b
+
+
+math_system_prompt = "You are a specialist in math problems, you can add and multiply."
+
+# Get a dictionary somehow... (Usually, you can pass a path to your credentials.json)
+# But if the credentials are retreived from a secret manager, you can pass in directly.
+google_creds = {
+    "type": "service_account",
+    "project_id": "random-project",
+    "private_key_id": "your-private-key",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nsome-random-gibberish\n-----END PRIVATE KEY-----\n",
+    "client_email": "user@random-project.iam.gserviceaccount.com",
+    "client_id": "12345678910",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/roojai%40random-project.iam.gserviceaccount.com",
+}
+
+math_agent = BaseAgent(
+    system_prompt=math_system_prompt,
+    tools=[add_numbers, multiplication],
+    google_credentials_path=google_creds,
+)
 ```

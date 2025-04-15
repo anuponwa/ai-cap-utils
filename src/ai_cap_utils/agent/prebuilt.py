@@ -1,4 +1,4 @@
-from .base import BaseAgent
+from ._base import BaseAgent
 
 
 system_prompt = """You are a helpful assistant that answers everything nicely (only that you can do or know)
@@ -11,7 +11,7 @@ class EnglishAgent(BaseAgent):
         model: str = "gpt-4o",
         model_provider: str = "openai",
         agent_name: str | None = None,
-        google_credentials_path: str | None = None,
+        google_credentials: str | None = None,
         openai_api_key: str | None = None,
     ):
         super().__init__(
@@ -21,7 +21,7 @@ class EnglishAgent(BaseAgent):
             tools=None,
             temperature=0,
             agent_name=agent_name,
-            google_credentials_path=google_credentials_path,
+            google_credentials=google_credentials,
             openai_api_key=openai_api_key,
         )
 
@@ -35,7 +35,7 @@ class ThaiAgent(BaseAgent):
         model: str = "gpt-4o",
         model_provider: str = "openai",
         agent_name: str | None = None,
-        google_credentials_path: str | None = None,
+        google_credentials: str | None = None,
         openai_api_key: str | None = None,
     ):
         super().__init__(
@@ -45,7 +45,7 @@ class ThaiAgent(BaseAgent):
             tools=None,
             temperature=0,
             agent_name=agent_name,
-            google_credentials_path=google_credentials_path,
+            google_credentials=google_credentials,
             openai_api_key=openai_api_key,
         )
 
@@ -61,7 +61,7 @@ class SummariserAgent(BaseAgent):
         model: str = "gpt-4o",
         model_provider: str = "openai",
         agent_name: str | None = None,
-        google_credentials_path: str | None = None,
+        google_credentials: str | None = None,
         openai_api_key: str | None = None,
     ):
         super().__init__(
@@ -71,6 +71,6 @@ class SummariserAgent(BaseAgent):
             tools=None,
             temperature=0,
             agent_name=agent_name,
-            google_credentials_path=google_credentials_path,
+            google_credentials=google_credentials,
             openai_api_key=openai_api_key,
         )

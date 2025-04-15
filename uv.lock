@@ -7,6 +7,39 @@ resolution-markers = [
 ]
 
 [[package]]
+name = "ai-cap-utils"
+version = "0.4.0"
+source = { editable = "." }
+dependencies = [
+    { name = "coolname" },
+    { name = "dotenv" },
+    { name = "langchain" },
+    { name = "langchain-anthropic" },
+    { name = "langchain-google-vertexai" },
+    { name = "langchain-openai" },
+    { name = "langgraph" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ipykernel" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "coolname", specifier = ">=2.2.0" },
+    { name = "dotenv", specifier = ">=0.9.9" },
+    { name = "langchain", specifier = ">=0.3.23" },
+    { name = "langchain-anthropic", specifier = ">=0.3.10" },
+    { name = "langchain-google-vertexai", specifier = ">=2.0.20" },
+    { name = "langchain-openai", specifier = ">=0.3.12" },
+    { name = "langgraph", specifier = ">=0.3.29" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "ipykernel", specifier = ">=6.29.5" }]
+
+[[package]]
 name = "annotated-types"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -73,39 +106,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/6c/81/3747dad6b14fa2cf5
 wheels = [
     { url = "https://files.pythonhosted.org/packages/72/76/20fa66124dbe6be5cafeb312ece67de6b61dd91a0247d1ea13db4ebb33c2/cachetools-5.5.2-py3-none-any.whl", hash = "sha256:d26a22bcc62eb95c3beabd9f1ee5e820d3d2704fe2967cbe350e20c8ffcd3f0a", size = 10080 },
 ]
-
-[[package]]
-name = "cap-utils"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "coolname" },
-    { name = "dotenv" },
-    { name = "langchain" },
-    { name = "langchain-anthropic" },
-    { name = "langchain-google-vertexai" },
-    { name = "langchain-openai" },
-    { name = "langgraph" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "ipykernel" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "coolname", specifier = ">=2.2.0" },
-    { name = "dotenv", specifier = ">=0.9.9" },
-    { name = "langchain", specifier = ">=0.3.23" },
-    { name = "langchain-anthropic", specifier = ">=0.3.10" },
-    { name = "langchain-google-vertexai", specifier = ">=2.0.20" },
-    { name = "langchain-openai", specifier = ">=0.3.12" },
-    { name = "langgraph", specifier = ">=0.3.29" },
-]
-
-[package.metadata.requires-dev]
-dev = [{ name = "ipykernel", specifier = ">=6.29.5" }]
 
 [[package]]
 name = "certifi"

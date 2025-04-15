@@ -1,4 +1,4 @@
-from ai_cap_utils.agent.base import BaseAgent
+from ai_cap_utils.agent import BaseAgent
 from ai_cap_utils.agent.prebuilt import SummariserAgent
 from ai_cap_utils.tool import tool
 
@@ -44,3 +44,8 @@ Ultimately, it's about making technology serve your values rather than letting i
 r = agent.chat_each_message(user_input=text, print_chat=True)
 print()
 print(r)  # Inspect the output
+
+print()
+
+# Test interactive chat
+agent.chat_interact()

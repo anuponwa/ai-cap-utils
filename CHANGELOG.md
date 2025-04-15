@@ -1,5 +1,13 @@
 # Change log
 
+## 0.4.0
+* Add support for passing google credentials as a dict or JSON format
+* Add rebuild graph capability in the `BaseAgent`
+* Add shared memory capability for multi agents
+* Refactor credentials handling in agents classes
+* Refactor agent base code, expose only the necessary interfaces
+* Change parameters name
+
 ## 0.3.0
 * Change to `ai-cap-utils`
 

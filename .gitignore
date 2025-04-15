@@ -13,6 +13,7 @@ wheels/
 secrets
 *credentials*
 .env
+*token*
 
 # Jupyter
 *.ipynb
