@@ -1,6 +1,3 @@
-import json
-import os
-import tempfile
 from uuid import uuid4
 
 import coolname
@@ -191,28 +188,6 @@ class BaseAgent(BaseChatInterface):
         self.__openai_api_key = openai_api_key
         self._set_credentials()
 
-        # _set_google_credentials(google_credentials=google_credentials)
-        # # if google_credentials:
-        # #     # Save the credentials in a temp json file
-        # #     # and point to that temp file
-        # #     if isinstance(google_credentials, dict):
-        # #         with tempfile.NamedTemporaryFile(
-        # #             mode="w", delete=False, suffix=".json"
-        # #         ) as tmp_file:
-        # #             json.dump(google_credentials, tmp_file)
-        # #             tmp_file_name = tmp_file.name
-
-        # #         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = tmp_file_name
-
-        # #     # A path is passed in
-        # #     elif isinstance(google_credentials, str):
-        # #         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_credentials
-
-        # _set_openai_key(openai_api_key=openai_api_key)
-
-        # # if openai_api_key:
-        # #     os.environ["OPENAI_API_KEY"] = openai_api_key
-
         self.llm = init_chat_model(
             model=model,
             model_provider=model_provider,
@@ -318,27 +293,6 @@ class BaseMultiAgentLLMRouter(BaseChatInterface):
         self.__openai_api_key = openai_api_key
         self._set_credentials()
 
-        # if google_credentials:
-        #     # Save the credentials in a temp json file
-        #     # and point to that temp file
-        #     if isinstance(google_credentials, dict):
-        #         with tempfile.NamedTemporaryFile(
-        #             mode="w", delete=False, suffix=".json"
-        #         ) as tmp_file:
-        #             json.dump(google_credentials, tmp_file)
-        #             tmp_file_name = tmp_file.name
-
-        #         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = tmp_file_name
-
-        #     # A path is passed in
-        #     elif isinstance(google_credentials, str):
-        #         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_credentials
-
-        # if openai_api_key:
-        #     os.environ["OPENAI_API_KEY"] = openai_api_key
-
-        # Structured LLM
-        # Will output to the pre-defined pydantic schema
         self.llm = init_chat_model(
             model=model,
             model_provider=model_provider,
