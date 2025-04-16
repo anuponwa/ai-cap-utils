@@ -12,7 +12,7 @@ A library to simplify your use case with chat bot with LLMs. Perfect for Common 
 See `example.py` and `example_multiagents.py`.
 
 
-### General
+### General/Chat agent with Python
 
 ```python
 from ai_cap_utils.agent import BaseAgent
@@ -136,4 +136,35 @@ math_agent = BaseAgent(
     tools=[add_numbers, multiplication],
     google_credentials_path=google_creds,
 )
+```
+
+### Streamlit chat UI
+
+We also provide a function that runs the chat UI with your pre-defined agent: `run_streamlit_chat_ui(agent)`.
+
+The function is under `ai_cap_utils.streamlit`.
+
+Let's say your `main.py` looks like this:
+
+```python
+from ai_cap_utils.agent import BaseAgent
+from ai_cap_utils.streamlit import run_streamlit_chat_ui
+
+if __name__ == "__main__":
+    my_agent = BaseAgent(
+        system_prompt="You are an extrovert who has a nice personality and loves to chat."
+    )
+    run_streamlit_chat_ui(my_agent)  # This command runs the streamlit chat UI and wait for the streamlit run command
+```
+
+You must run the `streamlit` command in the terminal/CLI:
+
+```
+streamlit run main.py
+```
+
+Or if you use `uv`:
+
+```
+uv run streamlit run main.py
 ```

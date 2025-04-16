@@ -1,5 +1,9 @@
 # Change log
 
+## 0.4.1
+* Add `streamlit` support
+* Now you can use `ai_cap_utils.streamlit.run_streamlit_chat_ui` function and run `streamlit run ...` command to run chat UI
+
 ## 0.4.0
 * Add support for passing google credentials as a dict or JSON format
 * Add rebuild graph capability in the `BaseAgent`

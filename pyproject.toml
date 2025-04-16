@@ -1,6 +1,6 @@
 [project]
 name = "ai-cap-utils"
-version = "0.4.0"
+version = "0.4.1"
 description = "A utilities library for Common AI Platform"
 readme = "README.md"
 authors = [
@@ -15,6 +15,7 @@ dependencies = [
     "langchain-openai>=0.3.12",
     "dotenv>=0.9.9",
     "coolname>=2.2.0",
+    "streamlit>=1.44.1",
 ]
 
 
