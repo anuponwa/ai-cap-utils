@@ -1,5 +1,8 @@
 # Change log
 
+## 0.5.0
+* Add our own custom `litellm` practice with custom endpoint (`openai` standard)
+
 ## 0.4.1
 * Add `streamlit` support
 * Now you can use `ai_cap_utils.streamlit.run_streamlit_chat_ui` function and run `streamlit run ...` command to run chat UI
