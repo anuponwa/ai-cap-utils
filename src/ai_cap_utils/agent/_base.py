@@ -3,6 +3,7 @@ from uuid import uuid4
 import coolname
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
+from langchain.chat_models.openai import ChatOpenAI
 from langchain_core.tools import BaseTool
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
@@ -123,8 +124,9 @@ class BaseAgent(BaseChatInterface):
     def __init__(
         self,
         system_prompt: str,
-        model: str = "gpt-4o",
-        model_provider: str = None,
+        model: str = "poc-ai-gcp-vertex-gemini-2.0-flash",
+        model_provider: str = "cap-litellm",
+        base_url: str = "https://do-cap-litellm-dev.scg-wedo.tech",
         tools: list[BaseTool] | None = None,
         temperature: float = 0,
         agent_name: str | None = None,
@@ -137,13 +139,15 @@ class BaseAgent(BaseChatInterface):
         ----------
             - system_prompt (str): A system prompt for the Agent. (Mandatory) Explain what this agent does or specialised in.
 
-            - model (str): An LLM's model name (Default = "gpt-4o")
+            - model (str): An LLM's model name (Default = "poc-ai-gcp-vertex-gemini-2.0-flash")
 
                 The name of the model, e.g. "o3-mini", "claude-3-5-sonnet-latest". You can also specify model and model provider in a single argument using '{model_provider}:{model}' format, e.g. "openai:gpt-4o".
 
-            - model_provider (str): The provider for the model (Default = None)
+            - model_provider (str): The provider for the model (Default = "litellm")
 
                 If not specified as part of model arg (see above), will attempt to infer model_provider from the model.
+
+            - base_url (str): The base url for our lite-llm server
 
             - tools (list[BaseTool] | None): A list of tools to register to the Agent (Default = None)
 
@@ -160,6 +164,9 @@ class BaseAgent(BaseChatInterface):
             - openai_api_key (str | None): API key/token for Open AI models (`model_provider = "openai"`) (Default = None)
 
                 If None, it will try to find `OPENAI_API_KEY` key in the system environment variables.
+
+                If the `model_provider` is "litellm", meaning our own API endpoint, this key must be provided.
+                (Our endpoint uses openai standard)
 
         Notes
         -----
@@ -183,17 +190,35 @@ class BaseAgent(BaseChatInterface):
         else:
             self.agent_name = f"{type(self).__name__} - {coolname.generate_slug(2).split('-')[0]}-{str(uuid4())[:4]}"
 
+        # Litellm endpoint
+        self._endpoint = base_url
+
         # Credentials
         self.__google_credentials = google_credentials
         self.__openai_api_key = openai_api_key
         self._set_credentials()
 
-        self.llm = init_chat_model(
-            model=model,
-            model_provider=model_provider,
-            temperature=temperature,
-            streaming=True,
-        )
+        if model_provider == "cap-litellm":
+            if openai_api_key is None:
+                raise ValueError(
+                    "`openai_api_key` must not be None if you want to use litellm."
+                )
+
+            self.llm = ChatOpenAI(
+                model=model,
+                base_url=self._endpoint,
+                api_key=openai_api_key,
+                temperature=temperature,
+                streaming=True,
+            )
+            
+        else:
+            self.llm = init_chat_model(
+                model=model,
+                model_provider=model_provider,
+                temperature=temperature,
+                streaming=True,
+            )
 
         self.graph = self._build_graph()
 

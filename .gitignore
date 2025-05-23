@@ -17,3 +17,6 @@ secrets
 
 # Jupyter
 *.ipynb
+
+# Test files
+*test*

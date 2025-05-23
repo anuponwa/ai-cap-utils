@@ -16,6 +16,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "coolname>=2.2.0",
     "streamlit>=1.44.1",
+    "langchain-community>=0.3.21",
 ]
 
 
